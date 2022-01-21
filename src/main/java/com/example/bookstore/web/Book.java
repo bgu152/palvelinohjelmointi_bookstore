@@ -1,8 +1,16 @@
 package com.example.bookstore.web;
 
+import javax.persistence.Entity;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+@Entity
 public class Book {
 	private String title,author;
 	private int year;
+	@Id //inte generated value eftersom isbn är unikt
 	private String isbn;
 	private double price;
 	public String getTitle() {
