@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.example.bookstore.BookstoreApplication;
+
 import com.example.bookstore.domain.Book;
 import com.example.bookstore.domain.BookRepository;
 
@@ -49,22 +49,13 @@ public class BookController {
 	}
 	
 	//Edit book
-//	@RequestMapping(value ="/edit/{id}", method=RequestMethod.GET)
-//	public String editBook(@PathVariable("id") Long bookId, Model model) {
-////		model.addAttribute("book", brepository.findById(bookId));
-//		model.addAttribute("book",new Book());
-//		log.info("Editing book");
-//		return "editbook";
-//	}	
-	
-	//Edit book
 	@RequestMapping(value ="/edit/{id}", method=RequestMethod.GET)
 	public String editBook(@PathVariable("id") Long bookId, Model model) {
 		model.addAttribute("book", brepository.findById(bookId));
 		return "editbook";
 	}
 	
-	//Save new book (the one that was just added)
+	//Save new book (the one that was just edited)
 	@RequestMapping(value="/edit/saveedited", method = RequestMethod.POST)
 	public String saveEdited(Book book) {
 		log.info("Saving edited book");
@@ -73,10 +64,6 @@ public class BookController {
 		brepository.save(book);
 		return "redirect:../booklist";
 	}
-	
-	
-	
-	
 	
 	@GetMapping("/index")
 	public String showBooks() {
