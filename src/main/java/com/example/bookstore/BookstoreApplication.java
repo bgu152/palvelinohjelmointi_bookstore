@@ -9,8 +9,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-import com.example.bookstore.web.Book;
-import com.example.bookstore.web.BookRepository;
+import com.example.bookstore.domain.Book;
+import com.example.bookstore.domain.BookRepository;
 
 
 @SpringBootApplication
