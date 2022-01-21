@@ -8,12 +8,16 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.example.bookstore.BookstoreApplication;
 import com.example.bookstore.domain.Book;
 import com.example.bookstore.domain.BookRepository;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @Controller
 public class BookController {
+	private static final Logger log = LoggerFactory.getLogger(BookController.class);
 	
 	@Autowired
 	private BookRepository brepository;
@@ -32,17 +36,47 @@ public class BookController {
 	
 	//Add new book
 	@RequestMapping(value ="/add")
-	public String addStudent(Model model) {
+	public String addBook(Model model) {
 		model.addAttribute("book", new Book());
 		return "addbook";
 	}
 	
-	//Save new book
+	//Save new book (the one that was just added)
 	@RequestMapping(value="/save", method = RequestMethod.POST)
 	public String save(Book book) {
 		brepository.save(book);
-		return "redirect:booklist";		
+		return "redirect:booklist";
 	}
+	
+	//Edit book
+//	@RequestMapping(value ="/edit/{id}", method=RequestMethod.GET)
+//	public String editBook(@PathVariable("id") Long bookId, Model model) {
+////		model.addAttribute("book", brepository.findById(bookId));
+//		model.addAttribute("book",new Book());
+//		log.info("Editing book");
+//		return "editbook";
+//	}	
+	
+	//Edit book
+	@RequestMapping(value ="/edit/{id}", method=RequestMethod.GET)
+	public String editBook(@PathVariable("id") Long bookId, Model model) {
+		model.addAttribute("book", brepository.findById(bookId));
+		return "editbook";
+	}
+	
+	//Save new book (the one that was just added)
+	@RequestMapping(value="/edit/saveedited", method = RequestMethod.POST)
+	public String saveEdited(Book book) {
+		log.info("Saving edited book");
+//		brepository.deleteById(book.getId());
+		System.out.println("bookId" + book.getId());
+		brepository.save(book);
+		return "redirect:../booklist";
+	}
+	
+	
+	
+	
 	
 	@GetMapping("/index")
 	public String showBooks() {

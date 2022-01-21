@@ -2,13 +2,13 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-	<title>Add book</title>
+	<title>Edit book</title>
 	<meta http-equiv="Content-Type" content="text-html" charset="UTF-8">
 </head>
 
 <body>
 	<h1>Add book</h1>
-		<form th:object="${book}" th:action="@{save}" action="#" method ="post">
+		<form th:object="${book}" th:action="@{saveedited}" action="#" method ="post">
 			<label for ="author">Author: </label>
 			<input type="text" id="author" th:field ="*{author}"/> <br/><br/>
 			<label for ="title">Title: </label>
@@ -19,6 +19,7 @@
 			<input type="text" id="year" th:field ="*{year}"/> <br/><br/>
 			<label for ="price">Price: </label>
 			<input type="text" id="price" th:field ="*{price}"/> <br/><br/>
+			<input type="text" id="id" th:field ="*{id}" readonly style ="display:none;"/> 
 			<input type="submit" value="Save"/>
 		</form>
 </body>
