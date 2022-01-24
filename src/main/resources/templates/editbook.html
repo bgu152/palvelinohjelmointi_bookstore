@@ -18,7 +18,11 @@
 			<label for ="year">Year: </label>
 			<input type="text" id="year" th:field ="*{year}"/> <br/><br/>
 			<label for ="price">Price: </label>
-			<input type="text" id="price" th:field ="*{price}"/> <br/><br/>
+			<input type="text" id="price" th:field ="*{price}"/> <br><br>
+			<label for ="catlist">Category:</label>
+			<select id="catlist" th:field ="*{category}">
+				<option th:each = "category:${categories}" th:value="${category.categoryid}" th:text="${category.name}" ></option>	
+			</select><br/><br/>
 			<input type="text" id="id" th:field ="*{id}" readonly style ="display:none;"/> 
 			<input type="submit" value="Save"/>
 		</form>
