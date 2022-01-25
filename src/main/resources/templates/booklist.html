@@ -50,7 +50,7 @@
 		</tbody>
 	</table>
 	
-	<a href="/add" class="btn btn-success">Add book</a>
+	<a sec:authorize="hasAuthority('ADMIN')" href="/add" class="btn btn-success">Add book</a>
 </div>
 </body>
 
