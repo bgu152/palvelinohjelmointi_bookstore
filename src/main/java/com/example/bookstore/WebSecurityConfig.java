@@ -37,7 +37,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		.and() //We could specify for example .authorizeRequests().antMatchers("/admin").authenticated(), but pointless here
 	.formLogin()
 		.loginPage("/login")//This if for your own login page
-		.defaultSuccessUrl("/booklist")//Where we go after successfull login
+		.defaultSuccessUrl("/booklist",true)//Where we go after successfull login
 		.permitAll()
 		.and()
 	.logout()

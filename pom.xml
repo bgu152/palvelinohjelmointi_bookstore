@@ -13,6 +13,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>bookstore</name>
 	<description>Demo project for Spring Boot</description>
+	<!-- The one below is important! https://stackoverflow.com/questions/64760529/springboot-heroku-org-maven-pluginsmaven-compiler-plugin3-8-1compile-failed-->
 	<properties>
 		<java.runtime.version>11</java.runtime.version>
 	</properties>
